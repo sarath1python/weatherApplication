@@ -2,12 +2,12 @@ import React from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
-import CurrentLocation from "./components/map"
+import SimpleMap from "./components/map"
 import Form from "./components/form"
 import Weather from "./components/weather"
-import { GoogleApiWrapper, InfoWindow, Marker } from 'google-maps-react';
+import Frame from "./components/Frame"
 
-const GOOGLE_MAP_API_KEY = ""
+
 const API_KEY = "44159c2e7f3c55ed8c3dd953327e23e2"
 
 class App extends React.Component{
@@ -17,7 +17,9 @@ class App extends React.Component{
     country:undefined,
     humidity:undefined,
     description:undefined,
-    error:undefined 
+    error:undefined,
+    lat:undefined,
+    lng:undefined
   }
   getWeather = async (e) => {
      e.preventDefault();
@@ -25,7 +27,8 @@ class App extends React.Component{
      const Country = e.target.elements.country.value;
      const api_call = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${City},${Country}&appid=${API_KEY}`)
      let data = await api_call.json();
-     if(City && Country)
+     
+     if(City && Country) 
      {
       if (data.cod != 404)
       {
@@ -35,7 +38,9 @@ class App extends React.Component{
           country:data.sys.country,
           humidity:data.main.humidity,
           description:data.weather[0].description,
-          error:undefined
+          error:undefined,
+          lat:data.coord.lat,
+          lng:data.coord.lon
         })
       }
       else
@@ -47,6 +52,8 @@ class App extends React.Component{
          country:undefined,
          humidity:undefined,
          description:undefined,
+         lat:undefined,
+         lng:undefined
         })
       }
      }
@@ -66,32 +73,9 @@ class App extends React.Component{
   render(){
     return (
       <div>
-        <div className="wrapper">
-          <div className="main">
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-5 title-container">
-                  <CurrentLocation centerAroundCurrentLocation google={this.props.google} />
-                </div>
-                <div className="col-xs-6 form-container">
-                  <Form getWeather={this.getWeather} />
-                  <Weather 
-                    temperature={this.state.temperature} 
-                    humidity={this.state.humidity}
-                    city={this.state.city}
-                    country={this.state.country}
-                    description={this.state.description}
-                    error={this.state.error}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Frame />
       </div>
     )    
   }
 }
-export default GoogleApiWrapper({
-  apiKey: 'AIzaSyBVkaJRdSnFp6RhAk3ert03ypJw49uy61g'
-})(App);
+export default App;

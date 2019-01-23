@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Merriweather:100,200,300,300i,400,400i,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
-
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
 body {
   font-family: "Open Sans", serif;
 }
@@ -22,7 +22,7 @@ body {
   margin: 0 auto;
 }
 
-.title-contfainer {
+.title-container {
   height: 90vh;
   background: url("img/bg.jpg") center center no-repeat;
   background-size: cover;
@@ -124,4 +124,51 @@ button:active {
   font-size: 20px;
   letter-spacing: 1px;
   font-weight: 200;
+}
+
+.map {
+  font-weight: bolder
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: rgb(255, 255, 255);
+  padding: 14px 16px;
+  background-color: rgb(247, 9, 9);
+  font-family: rgb(219, 98, 98);
+  margin: 0;
+}
+
+ .dropbtn:hover {
+  background-color: rgb(219, 98, 98);
+}
+
+.dropdown-content {
+  display: none;
+  color:black;
+  position: relative;;
+  background-color: #e6dcdc;
+  min-width: 100px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+.dropdown-content a {
+  float: none;
+  color: rgb(53, 5, 5);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown:hover .dropdown-content{
+  display: block;
 }
