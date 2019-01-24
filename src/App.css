@@ -153,6 +153,7 @@ button:active {
 .dropdown-content {
   display: none;
   color:black;
+  float:right;
   position: relative;;
   background-color: #e6dcdc;
   min-width: 100px;

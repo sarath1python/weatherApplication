@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
 import "../App.css"
 
-const AnyReactComponent = ({ text }) => <div class="map">{ text }</div>;
+const AnyReactComponent = ({ text }) => <div className="map">{ text }</div>;
 
 class SimpleMap extends Component {
     static defaultProps = {
